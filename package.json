@@ -1,0 +1,27 @@
+{
+  "name": "pod",
+  "version": "1.0.0",
+  "author": "Kristiyan Todorov",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "lerna run test --since --ignore @pod/common",
+    "start": "lerna run start --stream --ignore @pod/common",
+    "build": "lerna run build  --ignore @pod/common",
+    "clean": "lerna clean",
+    "bootstrap": "lerna bootstrap",
+    "new-version": "lerna version --conventional-commits --yes",
+    "diff": "lerna diff"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/jest",
+      "**/jest/**",
+      "**/babel-loader",
+      "**/babel-loader/**"
+    ]
+  }
+}

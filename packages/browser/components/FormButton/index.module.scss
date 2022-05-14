@@ -1,0 +1,41 @@
+@import '../../styles/variables.module.scss';
+
+.formButton {
+  background: $primary;
+  color: $white;
+  height: 2rem;
+  min-width: 7rem;
+  padding: 0 1rem 0 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 0.2rem;
+  &:hover {
+    background: $white;
+    color: $primary;
+  }
+}
+
+.loader {
+  width: 100%;
+  display: grid;
+  place-items: center;
+
+  &:before {
+    content: '';
+    top: 50%;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    border: 3px solid $border;
+    border-top-color: $primary;
+    animation: loading 0.7s linear infinite;
+    @keyframes loading {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

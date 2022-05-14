@@ -1,0 +1,54 @@
+@import '../../styles/variables.module.scss';
+@import '../../styles/mediaQueries.module.scss';
+
+.header {
+  width: 100vw;
+  height: 4.4rem;
+  background: $dark;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $border;
+}
+.link {
+  color: $primary;
+}
+.logoContainer {
+  padding-left: 1rem;
+}
+.navbar {
+  display: none;
+  padding-right: 1rem;
+  @include desktop {
+    display: block;
+  }
+  ul {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 3rem;
+  
+  }
+}
+.mobileNavButton {
+  font-size: 2em;
+  color: $primary;
+  background: none;
+  border: none;
+  padding-right: 1rem;
+  @include desktop {
+    display: none;
+  }
+}
+
+.mobileNav {
+  z-index: 3;
+  position: absolute;
+  width: 100vw;
+  @include desktop {
+    display: none;
+  }
+  ul {
+    display: grid;
+  }
+}

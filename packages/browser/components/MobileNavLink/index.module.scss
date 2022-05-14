@@ -1,0 +1,36 @@
+@import '../../styles/variables.module.scss';
+.linkItem {
+  opacity: 0;
+  list-style-type: none;
+  animation: fix ease-in-out 300ms 100ms;
+  animation-fill-mode: forwards;
+  @keyframes fix {
+    from {
+      opacity: 0;
+      transform: scale(0.3) translateY(-60px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0px);
+    }
+  }
+}
+.link {
+  text-decoration: none;
+  background: $dark;
+  display: block;
+  padding: 0.3rem 0 0.5rem 1rem;
+  &:hover {
+    background: $white;
+    $color: $primary;
+    &.unactive {
+      color: $primary;
+    }
+  }
+  &.active {
+    color: $primary;
+  }
+  &.unactive {
+    color: $white;
+  }
+}

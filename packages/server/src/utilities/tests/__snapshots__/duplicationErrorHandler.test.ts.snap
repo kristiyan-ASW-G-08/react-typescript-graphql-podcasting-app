@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`duplicationErrorHandler should call next with UserInputError with  an array of validation errors 1`] = `"Validation Error"`;

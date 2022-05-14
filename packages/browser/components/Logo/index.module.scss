@@ -1,0 +1,11 @@
+@import '../../styles/variables.module.scss';
+
+.logoContainer {
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  h1 {
+    font-size: 1.5rem;
+    color: $primary;
+  }
+}

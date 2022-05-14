@@ -1,0 +1,16 @@
+@import '../../styles/variables.module.scss';
+@import '../../styles/mediaQueries.module.scss';
+
+.fieldsWrapper {
+  display: grid;
+  place-items: start;
+  grid-gap: 1.5rem;
+  width: 60vw;
+  min-height: 25vh;
+  padding: 2rem;
+  border: solid 1px $border;
+  border-radius: 0.5rem;
+  @include small-phones {
+    width: 90vw;
+  }
+}

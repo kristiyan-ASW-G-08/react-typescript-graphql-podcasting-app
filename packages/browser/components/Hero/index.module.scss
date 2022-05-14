@@ -1,0 +1,74 @@
+@import '../../styles/variables.module.scss';
+@import '../../styles/mediaQueries.module.scss';
+
+.heroContainer {
+  width: 100vw;
+  height: 80vh;
+  background: linear-gradient(rgba(28, 41, 56, 0.7), rgba(28, 41, 56, 0.7)),
+    url('../../assets/banner.webp') center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: grid;
+  place-items: center;
+}
+
+.backdrop {
+  background: rgba(28, 41, 56, 0.7);
+  display: grid;
+  grid-gap: 1rem;
+  justify-items: start;
+  h1 {
+    font-size: 2.7rem;
+    width: 27rem;
+    color: $white;
+    span {
+      color: $primary;
+    }
+    @include small-phones {
+      width: 100vw;
+    }
+  }
+  p {
+    font-size: 1.2rem;
+    color: $white;
+    width: 30rem;
+    @include small-phones {
+      width: 100vw;
+    }
+  }
+  @include small-phones {
+    padding: 1rem;
+    width: 100vw;
+  }
+  @include phones {
+    padding: 3rem;
+  }
+  @include tablets {
+    padding: 3rem;
+  }
+  @include desktop {
+    padding: 5rem 13rem 5rem 13rem;
+  }
+}
+
+.buttonContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  grid-gap: 2rem;
+  a {
+    text-decoration: none;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    color: $white;
+    border: 3px solid $white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+}
+.opaqueButton {
+  background: none;
+}
+.primaryButton {
+  background: $primary;
+}

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`authorizationHandler throw an error when the secret is invalid 1`] = `"invalid signature"`;
+
+exports[`authorizationHandler throw an error when the secret is invalid 2`] = `"Log in to perform this action"`;

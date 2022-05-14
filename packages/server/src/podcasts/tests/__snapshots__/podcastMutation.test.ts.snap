@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Resolvers Mutations fail to create a podcast due to authorization  1`] = `
+Array [
+  [GraphQLError: Cannot read properties of undefined (reading 'authorization')],
+]
+`;
+
+exports[`Resolvers Mutations fail to create a podcast due to validation errors 1`] = `
+Array [
+  [UserInputError: Variable "$title" of required type "String!" was not provided.],
+  [UserInputError: Variable "$website" of required type "String!" was not provided.],
+  [UserInputError: Variable "$cover" of required type "Upload!" was not provided.],
+]
+`;

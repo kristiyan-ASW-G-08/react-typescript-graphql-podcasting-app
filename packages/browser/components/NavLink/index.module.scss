@@ -1,0 +1,14 @@
+@import '../../styles/variables.module.scss';
+.linkItem {
+  list-style-type: none;
+}
+.link {
+  font-size: 1ren;
+  text-decoration: none;
+  &.active {
+    color: $primary;
+  }
+  &.unactive {
+    color: $white;
+  }
+}

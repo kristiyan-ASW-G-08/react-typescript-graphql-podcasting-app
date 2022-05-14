@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@schema/*": ["src/schema/*"],
+      "@models/*": ["src/models/*"],
+      "@services/*": ["src/services/*"],
+      "@customUtilities/*": ["src/utilities/*"],
+      "@dtos/*": ["src/dtos/*"],
+      "@customTypes/*": ["src/types/*"],
+      "@typeDefs/*": ["src/typeDefs/*"],
+      "@customTypes/*": ["src/types/*"],
+      "@resolvers/*": ["src/resolvers/*"],
+      "@users/*": ["src/users/*"],
+      "@podcasts/*": ["src/podcasts/*"]
+    },
+    "target": "es6",
+    "lib": ["esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "preserveSymlinks": true
+  },
+  "include": ["./src", "./types"]
+}
