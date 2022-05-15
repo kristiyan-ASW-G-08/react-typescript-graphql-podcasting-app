@@ -24,6 +24,7 @@ const Login: NextPage = () => {
         username
         email
         token
+        userId
       }
     }
   `;

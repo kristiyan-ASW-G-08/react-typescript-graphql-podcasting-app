@@ -8,42 +8,42 @@ import Input from '@/components/Input';
 import FormWrapper from '@/components/FormWrapper';
 import FieldsWrapper from '@/components/FieldsWrapper';
 import FormButton from '@/components/FormButton';
-import PodcastValidator from '@pod/common/source/schemaValidators/PodcastValidator';
+import EpisodeValidator from '@pod/common/source/schemaValidators/EpisodeValidator';
 import NotificationContext from 'context/NotificationContext';
 import formErrorHandler from '@/utilities/formErrorHandler';
 import UploadButton from '@/components/UploacButton';
-import { createPodcastMutation } from '@/queries/podcastMutations';
+import { createEpisodeMutation } from '@/queries/episodeMutations';
 
-const CreatePodcastPage: NextPage = () => {
+const CreateEpisodePage: NextPage = () => {
   const setNotification = useContext(NotificationContext);
   const router = useRouter();
-
-  const [createPodcast, { data, loading }] = useMutation(createPodcastMutation);
+  const podcast = router.query.podcastId;
+  const [createEpisode, { data, loading }] = useMutation(createEpisodeMutation);
   useEffect(() => {
     if (data !== undefined) {
-      router.push(`/podcast/${data.createPodcastMutation._id}`);
+      router.push(`/podcast/${data.create._id}`);
     }
   }, [data, router]);
   return (
     <>
       <HeadLayout
-        title="Create New Podcast"
-        description="Create new podcasts page for PodCaster"
-        keywords="podcast"
+        title="Create New Episode"
+        description="Create new podcasts episode"
+        keywords="episode"
       />
 
       <Formik
-        validationSchema={PodcastValidator}
+        validationSchema={EpisodeValidator}
         initialValues={{
           title: '',
-          website: '',
-          cover: '',
+          description: '',
+          audioFile: '',
         }}
         onSubmit={(values, { setErrors }: FormikHelpers<FormikValues>) => {
-          createPodcast({ variables: values })
+          createEpisode({ variables: { ...values, podcast } })
             .then(() =>
               setNotification({
-                content: 'You have successfully created a podcast!',
+                content: 'You have successfully created an episode!',
               }),
             )
             .catch(err => {
@@ -58,9 +58,13 @@ const CreatePodcastPage: NextPage = () => {
               <FieldsWrapper>
                 <Input name="title" type="text" placeholder="Title" />
 
-                <Input name="website" type="url" placeholder="Website" />
-                <UploadButton name="cover" setFieldValue={setFieldValue} />
-                <FormButton text={'Create a Podcast'} loading={loading} />
+                <Input
+                  name="description"
+                  type="text"
+                  placeholder="description"
+                />
+                <UploadButton name="audioFile" setFieldValue={setFieldValue} />
+                <FormButton text={'Create an Episode'} loading={loading} />
               </FieldsWrapper>
             </Form>
           </FormWrapper>
@@ -70,4 +74,4 @@ const CreatePodcastPage: NextPage = () => {
   );
 };
 
-export default CreatePodcastPage;
+export default CreateEpisodePage;

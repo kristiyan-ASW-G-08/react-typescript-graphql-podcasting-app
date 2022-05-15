@@ -30,6 +30,9 @@ async function startServer(): Promise<void> {
   });
   await server.start();
   const app = express();
+
+  app.use('/images', express.static('./images'));
+  app.use('/audiofiles', express.static('./audiofiles'));
   app.use(cors(corsOptions));
 
   app.use(graphqlUploadExpress());

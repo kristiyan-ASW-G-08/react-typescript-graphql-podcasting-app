@@ -234,7 +234,7 @@ describe('LoginPage', () => {
       waitFor(() => expect(input).toHaveAttribute('value', value));
     });
 
-    userEvent.click(getByText('Sign Up'));
+    userEvent.click(getByText('Login'));
     waitFor(() => {
       expect(setNotificationState).toBeCalledTimes(1);
     });

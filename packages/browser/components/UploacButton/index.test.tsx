@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 import getFile from 'utilities/getFile';
-import ImageInput from '.';
+import UploadButton from '.';
 import clickHandler from './clickHandler';
 
 jest.mock('./clickHandler');
@@ -15,23 +15,23 @@ const clickHandlerMock = clickHandler as jest.Mock<any>;
 const mockFile = new File(['file'], 'test.png', { type: 'image/png' });
 
 getFileMock.mockReturnValue({ fileUrl: 'mockFileUrl', file: mockFile });
-describe('ImageInput', () => {
+describe('UploadButton', () => {
   const name = 'image';
   const setFieldValue = jest.fn();
   const buttonText = 'Upload avatar';
   afterAll(() => jest.restoreAllMocks());
-  it('render ImageInput', () => {
+  it('render UploadButton', () => {
     expect.assertions(3);
     const { getByTestId, getByText } = render(
-      <ImageInput name={name} setFieldValue={setFieldValue} />,
+      <UploadButton name={name} setFieldValue={setFieldValue} />,
     );
     const uploadButton = getByText(buttonText);
-    const imageInput = getByTestId('input');
+    const input = getByTestId('input');
     userEvent.click(uploadButton);
 
     expect(clickHandlerMock).toHaveBeenCalledTimes(1);
 
-    fireEvent.change(imageInput, {
+    fireEvent.change(input, {
       target: {
         files: [mockFile],
       },

@@ -1,0 +1,22 @@
+@import './variables.module.scss';
+.container {
+  width: 100vw;
+  height: 90vh;
+  display: grid;
+  place-items: center center;
+  div {
+    display: grid;
+    place-items: center center;
+  }
+}
+
+.notFound {
+  font-size: 5rem;
+}
+.link {
+  text-decoration: none;
+  color: $primary;
+  &:hover {
+    color: $danger;
+  }
+}

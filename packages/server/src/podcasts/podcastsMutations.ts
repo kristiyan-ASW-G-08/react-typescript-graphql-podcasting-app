@@ -6,14 +6,10 @@ import createPodcast from '@podcasts/createPodcast';
 import PodcastType from '@customTypes/PodcastType';
 import authorizationHandler from '@customUtilities/authorizationHandler';
 import deleteFile from '@customUtilities/deleteFile';
+import Context from '@src/types/Context';
 import getPodcastById from './getPodcastById';
 import EditPodcastDto from './EditPodcastDto';
 
-interface Context {
-  headers: {
-    Authorization: string;
-  };
-}
 const mutation = {
   createPodcastMutation: async (
     _: any,

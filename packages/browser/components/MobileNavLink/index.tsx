@@ -16,10 +16,9 @@ const MobileNavLink: FC<MobileNavLinkProps> = ({
 }) => {
   const router = useRouter();
   return (
-    <li className={styles.linkItem}>
+    <li onClick={fn} className={styles.linkItem}>
       <Link href={href}>
         <a
-          o
           className={[
             router.pathname === href ? styles.unactive : styles.active,
             styles.link,

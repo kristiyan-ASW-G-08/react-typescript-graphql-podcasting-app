@@ -6,7 +6,7 @@ const typeDefs = gql`
   type User {
     username: String!
     email: String!
-    id: ID!
+    _id: ID!
   }
 
   type Query {
@@ -21,16 +21,28 @@ const typeDefs = gql`
   type UserLoginPayload {
     username: String!
     email: String!
+    userId: String!
     token: String!
   }
   type Podcast {
     title: String!
     website: String!
+    cover: String!
     user: User!
+    _id: ID!
+  }
+
+  type Episode {
+    title: String!
+    description: String!
+    audioFile: String!
+    user: User!
+    podcast: Podcast!
     _id: ID!
   }
   type Query {
     podcasts(query: String): [Podcast]!
+    getPodcast(podcastId: ID!): Podcast!
   }
   type Mutation {
     createUserMutation(
@@ -54,6 +66,13 @@ const typeDefs = gql`
       cover: Upload
       _id: ID!
     ): Podcast!
+
+    createEpisodeMutation(
+      title: String!
+      description: String!
+      audioFile: Upload!
+      podcast: ID!
+    ): Episode!
   }
 `;
 

@@ -13,7 +13,8 @@
       "@customTypes/*": ["src/types/*"],
       "@resolvers/*": ["src/resolvers/*"],
       "@users/*": ["src/users/*"],
-      "@podcasts/*": ["src/podcasts/*"]
+      "@podcasts/*": ["src/podcasts/*"],
+      "@episodes/*": ["src/episodes/*"]
     },
     "target": "es6",
     "lib": ["esnext"],

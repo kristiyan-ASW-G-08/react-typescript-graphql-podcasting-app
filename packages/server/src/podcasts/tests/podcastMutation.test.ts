@@ -1,15 +1,11 @@
 import mongoose from 'mongoose';
 import { ApolloServer } from 'apollo-server-express';
 import { sign } from 'jsonwebtoken';
-import FormData from 'form-data';
 import connectToDB from '@customUtilities/connectToDB';
 import UserModel from '@src/users/UserModel';
 import PodcastModel from '@src/podcasts/PodcastModel';
 // @ts-ignore
 import typeDefs from '@typeDefs/typeDefs';
-import apolloServer from '@customUtilities/createApoloServer';
-import { string } from 'yup';
-import fs from 'fs';
 import { Readable } from 'stream';
 // @ts-ignore
 import { Upload } from 'graphql-upload/public';
@@ -53,13 +49,6 @@ describe('Resolvers', () => {
       title: 'someTitle',
       website: 'http://somefakewebsite.fakewebsite',
     };
-
-    const incorrectValues = {
-      username: '',
-      email: 'notAnEMail',
-      password: 'pass',
-      confirmPAssword: '',
-    };
     describe('createPodcastMutation', () => {
       it('create podcast successfully', async () => {
         expect.assertions(2);
@@ -95,7 +84,6 @@ describe('Resolvers', () => {
             ...values,
           },
         });
-        console.log(JSON.stringify(result.errors));
         expect(result.errors).toBeUndefined();
         expect(result.data?.createPodcastMutation._id).toBeTruthy();
       });

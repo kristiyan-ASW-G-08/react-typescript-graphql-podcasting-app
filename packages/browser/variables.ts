@@ -1,10 +1,7 @@
 import { makeVar } from '@apollo/client';
 import UserData from './types/UserData';
 
-const defaultUserData = { username: '', email: '', token: '' };
-if (typeof window !== 'undefined') {
-  console.log('Defined');
-}
+const defaultUserData = { username: '', email: '', token: '', userId: '' };
 const tokenVar =
   typeof window !== 'undefined'
     ? makeVar<string>(localStorage.getItem('token') as string)

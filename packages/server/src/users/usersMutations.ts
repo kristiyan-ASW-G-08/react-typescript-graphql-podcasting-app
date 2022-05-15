@@ -24,6 +24,7 @@ const mutation = {
     username: string;
     email: string;
     token: string;
+    userId: string;
   }> => {
     const { SECRET } = process.env;
     const user = await getUserByEmail(email);
@@ -51,6 +52,7 @@ const mutation = {
       username: user.username,
       email: user.email,
       token,
+      userId: user._id,
     };
   },
 };

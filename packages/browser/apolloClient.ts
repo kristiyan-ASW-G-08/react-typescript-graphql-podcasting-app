@@ -6,7 +6,7 @@ import { createUploadLink } from 'apollo-upload-client';
 
 const apolloClient = new ApolloClient({
   link: createUploadLink({
-    uri: 'http://localhost:4000/graphql',
+    uri: `${process.env.NEXT_PUBLIC_SERVER_URL}/graphql`,
     headers: {
       authorization: `bearer ${
         typeof window !== 'undefined'

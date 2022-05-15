@@ -12,12 +12,14 @@ import { defaultUserData, userDataVar } from '../../variables';
 const Navbar = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const token = useReactiveVar(tokenVar);
-  console.log(token);
   const setDefaultUserData = () => {
     tokenVar('');
     userDataVar(defaultUserData);
   };
-
+  const setMobileNavState = () => {
+    console.timeLog('Avc');
+    setIsActive(prev => !prev);
+  };
   return (
     <>
       <header className={styles.header}>
@@ -26,23 +28,15 @@ const Navbar = () => {
         </div>
         <nav className={styles.navbar}>
           <ul>
-            <NavLink fn={() => setIsActive(false)} href="/" text="Home" />
+            <NavLink href="/" text="Home" />
             {token ? (
               <>
-                <NavLink
-                  fn={() => setIsActive(false)}
-                  href="/create-podcast"
-                  text="New Podcast"
-                />
-                <NavLink
-                  fn={() => setIsActive(false)}
-                  href="/my-podcasts"
-                  text="My Podcasts"
-                />
+                <NavLink href="/create-podcast" text="New Podcast" />
+                <NavLink href="/my-podcasts" text="My Podcasts" />
                 <NavLink
                   href="/"
                   fn={() => {
-                    setIsActive(false);
+                    setIsActive(prev => !prev);
                     setDefaultUserData();
                   }}
                   text="Logout"
@@ -50,45 +44,34 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <NavLink
-                  fn={() => setIsActive(false)}
-                  href="/sign-up"
-                  text="Sign Up"
-                />
-                <NavLink
-                  fn={() => setIsActive(false)}
-                  href="/login"
-                  text="Login"
-                />
+                <NavLink href="/sign-up" text="Sign Up" />
+                <NavLink href="/login" text="Login" />
               </>
             )}
           </ul>
         </nav>
-        <button
-          onClick={() => setIsActive(!isActive)}
-          className={styles.mobileNavButton}
-        >
+        <button onClick={setMobileNavState} className={styles.mobileNavButton}>
           <FontAwesomeIcon icon="bars" />
         </button>
       </header>
       {isActive ? (
         <nav className={styles.mobileNav}>
           <ul>
-            <MobileNavLink fn={() => setIsActive(false)} href="/" text="Home" />
+            <MobileNavLink fn={setMobileNavState} href="/" text="Home" />
             <MobileNavLink
-              fn={() => setIsActive(false)}
+              fn={setMobileNavState}
               href="/sign-up"
               text="Podcasts"
             />
             {token ? (
               <>
                 <MobileNavLink
-                  fn={() => setIsActive(false)}
+                  fn={setMobileNavState}
                   href="/create-podcast"
                   text="New Podcasts"
                 />
                 <MobileNavLink
-                  fn={() => setIsActive(false)}
+                  fn={setMobileNavState}
                   href="/my-podcasts"
                   text="My Podcasts"
                 />
@@ -104,12 +87,12 @@ const Navbar = () => {
             ) : (
               <>
                 <MobileNavLink
-                  fn={() => setIsActive(false)}
+                  fn={setMobileNavState}
                   href="/sign-up"
                   text="Sign Up"
                 />
                 <MobileNavLink
-                  fn={() => setIsActive(false)}
+                  fn={setMobileNavState}
                   href="/login"
                   text="Login"
                 />

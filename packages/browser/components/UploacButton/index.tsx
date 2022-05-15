@@ -5,24 +5,38 @@ import getFile from 'utilities/getFile';
 import clickHandler from './clickHandler';
 import inputStyles from 'components/Input/index.module.scss';
 import styles from './index.module.scss';
-interface ImageInputProps {
+import UploadButtonPlayer from 'components/UploadButtonPlayer';
+import imageFileTypes from '@pod/common/source/fileTypes/imageFileTypes';
+import audioFileTypes from '@pod/common/source/fileTypes/audioFileTypes';
+
+interface UploadButtonProps {
   name: string;
   setFieldValue: (name: string, value: File) => any;
 }
-export const ImageInput: FC<ImageInputProps> = ({ name, setFieldValue }) => {
+
+export const UploadButton: FC<UploadButtonProps> = ({
+  name,
+  setFieldValue,
+}) => {
   const [fileUrl, setFileUrl] = useState<string>();
   const inputRef = useRef<HTMLInputElement>(null);
+  const [showImage, setShowImage] = useState<boolean>(true);
+  const [showPlayer, setShowPlayer] = useState<boolean>(true);
   const uploadHandler = (e: SyntheticEvent<HTMLInputElement>) => {
     //@ts-ignore
     const { file, fileUrl } = getFile(e);
+    setShowImage(imageFileTypes.includes(file.type));
+    setShowPlayer(audioFileTypes.includes(file.type));
     setFileUrl(fileUrl);
+    console.log(name);
     setFieldValue(name, file);
   };
   return (
     <div className={inputStyles.input}>
-      {fileUrl ? <img src={fileUrl} alt="" /> : ''}
+      {fileUrl && showImage ? <img src={fileUrl} alt="" /> : ''}
+      {fileUrl && showPlayer ? <UploadButtonPlayer src={fileUrl} /> : ''}
       <input
-        data-testid="input"
+        data-testid="file-input"
         ref={inputRef}
         name={name}
         type="file"
@@ -30,7 +44,7 @@ export const ImageInput: FC<ImageInputProps> = ({ name, setFieldValue }) => {
         hidden
       />
       <button
-        className={styles.imageInputButton}
+        className={styles.uploadButton}
         type="button"
         onClick={() => clickHandler(inputRef)}
       >
@@ -41,4 +55,4 @@ export const ImageInput: FC<ImageInputProps> = ({ name, setFieldValue }) => {
   );
 };
 
-export default ImageInput;
+export default UploadButton;

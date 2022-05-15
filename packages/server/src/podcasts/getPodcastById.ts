@@ -6,7 +6,7 @@ const getPodcastById = async (podcastId: string): Promise<PodcastType> =>
   getResource<PodcastType>(
     PodcastModel,
     { name: '_id', value: podcastId },
-    new Error('POdcast Was Not Found'),
+    new Error('Podcast Was Not Found'),
   );
 
 export default getPodcastById;
