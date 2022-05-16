@@ -1,0 +1,20 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mediaQueries.module.scss';
+
+.container {
+  padding: 1rem;
+}
+
+.contentContainer {
+  padding: 1rem;
+  p,
+  h1 {
+    word-wrap: break-word;
+  }
+  p {
+    color: lighten($dark, 30%);
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+}

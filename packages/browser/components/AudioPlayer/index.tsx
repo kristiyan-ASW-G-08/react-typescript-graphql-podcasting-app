@@ -1,20 +1,30 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { boolean } from 'yup';
 import styles from './index.module.scss';
 import logo from '../../assets/logo-default.svg';
 
 interface UploadButtonProps {
-  src: string;
+  audioSrc: string;
+  coverSrc?: string | undefined;
+  fixed?: boolean;
 }
 
-const UploadButtonPlayer: FC<UploadButtonProps> = ({ src }) => {
+const UploadButtonPlayer: FC<UploadButtonProps> = ({
+  audioSrc,
+  coverSrc,
+  fixed = false,
+}) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [audio, setAudio] = useState(new Audio(src));
+  const [audio, setAudio] = useState(new Audio(audioSrc));
   const [currentTime, setCurrentTime] = useState<number>(0);
   const progressRef = useRef<HTMLDivElement>(null);
   const progressContainerRef = useRef<HTMLDivElement>(null);
+  //@ts-ignore
+  const setSpeed = ({ target: { value } }: SyntheticEvent) => {
+    audio.playbackRate = Number(value);
+  };
   const updateProgress = ({ currentTarget }: Event) => {
     if (progressRef) {
       //@ts-ignore
@@ -77,15 +87,26 @@ const UploadButtonPlayer: FC<UploadButtonProps> = ({ src }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${fixed ? styles.fixed : ''}`}>
       <div className={styles.logoContainer}>
         <div className={`${styles.logo} ${isPlaying ? styles.running : ''}`}>
-          <Image
-            src={logo ? logo : ''}
-            height={20}
-            width={40}
-            alt="PodCasting Logo"
-          />
+          {coverSrc ? (
+            <Image
+              className={'img'}
+              layout="fill"
+              objectFit="cover"
+              src={coverSrc ? coverSrc : ''}
+              alt="Podcast Cover"
+            />
+          ) : (
+            <Image
+              className={'logo'}
+              height={30}
+              width={30}
+              src={logo}
+              alt="PodCasting Logo"
+            />
+          )}
         </div>
       </div>
       <div className={styles.progressContainer} ref={progressContainerRef}>
@@ -111,6 +132,11 @@ const UploadButtonPlayer: FC<UploadButtonProps> = ({ src }) => {
         <button type="button" onClick={forward} className={styles.button}>
           <FontAwesomeIcon icon="forward" />
         </button>
+        <select name="speed" className={styles.button} onChange={setSpeed}>
+          <option value="1">1x</option>
+          <option value="2">1.5x</option>
+          <option value="3">2x</option>
+        </select>
       </div>
     </div>
   );

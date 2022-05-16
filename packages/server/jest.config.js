@@ -18,5 +18,6 @@ module.exports = {
     'resolvers/(.*)$': '<rootDir>/src/resolvers/$1',
     'users/(.*)$': '<rootDir>/src/users/$1',
     'podcasts/(.*)$': '<rootDir>/src/podcasts/$1',
+    'episodes/(.*)$': '<rootDir>/src/episodes/$1',
   },
 };

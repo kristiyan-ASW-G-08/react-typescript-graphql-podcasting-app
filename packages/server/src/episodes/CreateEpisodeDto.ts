@@ -1,4 +1,4 @@
-export default interface CreatePodcastDto {
+export default interface CreateEpisodeDto {
   title: string;
   description: string;
   audioFile: any;

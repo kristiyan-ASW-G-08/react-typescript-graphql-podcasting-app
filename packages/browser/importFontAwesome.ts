@@ -6,6 +6,23 @@ import {
   faBackward,
   faForward,
 } from '@fortawesome/free-solid-svg-icons';
-import { faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import {
+  fab,
+  faTwitter,
+  faInstagram,
+  faFacebook,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
 
-library.add(faBars, faPlay, faPause, faBackward, faForward);
+library.add(
+  fab,
+  faBars,
+  faPlay,
+  faPause,
+  faBackward,
+  faForward,
+  faTwitter,
+  faInstagram,
+  faFacebook,
+  faYoutube,
+);

@@ -21,7 +21,8 @@ const CreateEpisodePage: NextPage = () => {
   const [createEpisode, { data, loading }] = useMutation(createEpisodeMutation);
   useEffect(() => {
     if (data !== undefined) {
-      router.push(`/podcast/${data.create._id}`);
+      console.log(data);
+      router.push(`/episode/${data.createEpisodeMutation._id}`);
     }
   }, [data, router]);
   return (

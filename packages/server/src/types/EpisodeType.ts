@@ -6,4 +6,5 @@ export default interface PodcastType extends Document {
   audioFile: string;
   user: string;
   podcast: string;
+  date: string;
 }

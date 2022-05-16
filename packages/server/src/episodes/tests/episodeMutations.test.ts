@@ -3,7 +3,7 @@ import { ApolloServer } from 'apollo-server-express';
 import { sign } from 'jsonwebtoken';
 import connectToDB from '@customUtilities/connectToDB';
 import UserModel from '@src/users/UserModel';
-import PodcastModel from '@src/podcasts/PodcastModel';
+import EpisodeModel from '@src/episodes/EpisodeModel';
 // @ts-ignore
 import typeDefs from '@typeDefs/typeDefs';
 import { Readable } from 'stream';
@@ -42,15 +42,17 @@ describe('Resolvers', () => {
     );
 
     afterEach(async () => {
-      await PodcastModel.deleteMany({}).exec();
+      await EpisodeModel.deleteMany({}).exec();
     });
 
     const values = {
       title: 'someTitle',
-      website: 'http://somefakewebsite.fakewebsite',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      podcastId: mongoose.Types.ObjectId().toString(),
     };
-    describe('createPodcastMutation', () => {
-      it('create podcast successfully', async () => {
+    describe('createEpisodeMutation', () => {
+      it('create episode successfully', async () => {
         expect.assertions(2);
         const file = Readable.from(Buffer.from('hello upload', 'utf-8'));
         // @ts-ignore
@@ -60,16 +62,16 @@ describe('Resolvers', () => {
           resolve({
             createReadStream: () => file,
             file: {
-              filename: 'some_file.svg',
-              mimetype: 'image/svg+xml',
+              filename: 'some_file.mp3',
+              mimetype: 'audio/mp3',
             },
-            filename: 'some_file.svg',
-            mimetype: 'image/svg+xml',
+            filename: 'some_file.mp3',
+            mimetype: 'audio/mp3',
           }),
         );
         const query = `
-          mutation createPodcastMutation( $title:String!,$website:String!,$cover: Upload!) {
-            createPodcastMutation(title: $title,website: $website,cover: $cover) {
+          mutation createEpisodeMutation( $title:String!,$description:String!,$audioFile: Upload!,$podcastId:ID!) {
+            createEpisodeMutation(title: $title,description: $description,audioFile: $audioFile,podcast:$podcastId) {
               _id
             }
           }
@@ -84,25 +86,25 @@ describe('Resolvers', () => {
         const result = await testServer.executeOperation({
           query,
           variables: {
-            cover: upload,
+            audioFile: upload,
             ...values,
           },
         });
         expect(result.errors).toBeUndefined();
-        expect(result.data?.createPodcastMutation._id).toBeTruthy();
+        expect(result.data?.createEpisodeMutation._id).toBeTruthy();
       });
     });
 
-    it('fail to create a podcast due to validation errors', async () => {
+    it('fail to create a episode due to validation errors', async () => {
       expect.assertions(1);
 
       const query = `
-        mutation createPodcastMutation( $title:String!,$website:String!,$cover: Upload!) {
-          createPodcastMutation(title: $title,website: $website,cover: $cover) {
-            _id
-          }
+      mutation createEpisodeMutation( $title:String!,$description:String!,$audioFile: Upload!,$podcastId:ID!) {
+        createEpisodeMutation(title: $title,description: $description,audioFile: $audioFile,podcast:$podcastId) {
+          _id
         }
-      `;
+      }
+    `;
 
       const testServer = new ApolloServer({
         typeDefs,
@@ -116,7 +118,7 @@ describe('Resolvers', () => {
       });
       expect(result.errors).toMatchSnapshot();
     });
-    it('fail to create a podcast due to authorization error', async () => {
+    it('fail to create a episode due to authorization error', async () => {
       expect.assertions(1);
       const file = Readable.from(Buffer.from('hello upload', 'utf-8'));
       // @ts-ignore
@@ -126,20 +128,20 @@ describe('Resolvers', () => {
         resolve({
           createReadStream: () => file,
           file: {
-            filename: 'some_file.svg',
-            mimetype: 'image/svg+xml',
+            filename: 'some_file.mp3',
+            mimetype: 'audio/mp3',
           },
-          filename: 'some_file.svg',
-          mimetype: 'image/svg+xml',
+          filename: 'some_file.mp3',
+          mimetype: 'audio/mp3',
         }),
       );
       const query = `
-        mutation createPodcastMutation( $title:String!,$website:String!,$cover: Upload!) {
-          createPodcastMutation(title: $title,website: $website,cover: $cover) {
-            _id
-          }
+      mutation createEpisodeMutation( $title:String!,$description:String!,$audioFile: Upload!,$podcastId:ID!) {
+        createEpisodeMutation(title: $title,description: $description,audioFile: $audioFile,podcast:$podcastId) {
+          _id
         }
-      `;
+      }
+    `;
 
       const testServer = new ApolloServer({
         typeDefs,
@@ -149,7 +151,7 @@ describe('Resolvers', () => {
       const result = await testServer.executeOperation({
         query,
         variables: {
-          cover: upload,
+          audioFile: upload,
           ...values,
         },
       });

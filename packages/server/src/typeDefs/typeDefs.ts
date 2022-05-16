@@ -36,13 +36,19 @@ const typeDefs = gql`
     title: String!
     description: String!
     audioFile: String!
+    date: String!
     user: User!
     podcast: Podcast!
     _id: ID!
   }
+  type Episodes {
+    episodes: [Episode]!
+  }
   type Query {
     podcasts(query: String): [Podcast]!
     getPodcast(podcastId: ID!): Podcast!
+    getEpisode(episodeId: ID!): Episode!
+    getEpisodesByPodcast(podcastId: ID!): Episodes!
   }
   type Mutation {
     createUserMutation(

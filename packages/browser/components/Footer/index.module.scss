@@ -1,0 +1,25 @@
+@import '../../styles/variables.module.scss';
+.footer {
+  display: grid;
+  grid-gap: 0.5rem;
+  width: 100vw;
+  min-height: 10rem;
+  background: $dark;
+  position: absolute;
+  padding: 1rem;
+  p {
+    color: $white;
+  }
+  .mediaContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 2rem);
+    .mediaIcon {
+      color: $primary;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        color: $white;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

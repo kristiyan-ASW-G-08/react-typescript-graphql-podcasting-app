@@ -15,13 +15,18 @@ const PodcastValidatorValidator = yup.object().shape({
   cover: yup
     .mixed()
     .required('Cover is required!')
-    .test('fileType', 'Upload an Image file', value => {
-      if (value.type) {
+    .test('fileType', 'Upload an Image. Current file type is not supported', value => {
+      if (value && value.type) {
         return imageFileTypes.includes(value.type);
-      } else if (value.file) {
+      } else if (value && value.file) {
         return imageFileTypes.includes(value.file.mimetype);
+      } else if (value && value.then) {
+        //@ts-ignore
+        value.then(({ file }) => {
+          return imageFileTypes.includes(file.mimetype);
+        });
       }
-      return imageFileTypes.includes(value.type);
+      return false;
     }),
 });
 

@@ -17,6 +17,10 @@ const EpisodeSchema = new Schema<EpisodeType>({
     ref: 'Podcast',
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 // @ts-ignore

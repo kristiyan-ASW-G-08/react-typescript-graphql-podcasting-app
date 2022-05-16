@@ -1,9 +1,9 @@
-import authorizationHandler from '@src/utilities/authorizationHandler';
-import validationHandler from '@src/utilities/validationHandler';
+import authorizationHandler from '@customUtilities/authorizationHandler';
+import validationHandler from '@customUtilities/validationHandler';
 import Context from '@src/types/Context';
 import EpisodeType from '@src/types/EpisodeType';
 import EpisodeValidator from '@pod/common/source/schemaValidators/EpisodeValidator';
-import writeFile from '@src/utilities/writeFile';
+import writeFile from '@customUtilities/writeFile';
 import CreateEpisodeDto from './CreateEpisodeDto';
 import createEpisode from './createEpisode';
 

@@ -6,7 +6,14 @@ import { gql } from '@apollo/client';
 import { useRouter } from 'next/router';
 import styles from './index.module.scss';
 import { userDataVar } from 'variables';
+import PodcastCard from '@/components/PodcastCard';
+import Episode from '@/components/Episode';
 
+interface EpisodeType {
+  title: string;
+  description: string;
+  _id: string;
+}
 interface PodcastProps {
   podcast: {
     title: string;
@@ -18,11 +25,14 @@ interface PodcastProps {
       _id: string;
     };
   };
+  episodes: EpisodeType[];
 }
 
 const Podcast: FC<PodcastProps> = ({
   podcast: { title, website, cover, _id, user },
+  episodes,
 }) => {
+  console.log(episodes);
   const [userId, setUserId] = useState<string>('');
   useEffect(() => {
     setUserId(userDataVar().userId);
@@ -30,29 +40,20 @@ const Podcast: FC<PodcastProps> = ({
 
   return (
     <>
-      <HeadLayout title={'Podcast'} />
+      <HeadLayout title={title} />
       <div className={styles.container}>
-        <div className={styles.card}>
-          <img src={`${process.env.NEXT_PUBLIC_SERVER_URL}/${cover}`} />
-          <h1>{title}</h1>
-          <h2>{user.username}</h2>
-          <div className={styles.buttonContainer}>
-            {userId === user._id ? (
-              <>
-                <Link href={website}>
-                  <button>Edit</button>
-                </Link>
-                <Link href={`/create-episode/${_id}`}>
-                  <button>Create An Episode</button>
-                </Link>
-              </>
-            ) : (
-              ''
-            )}
-            <Link href={website}>
-              <button>Website</button>
-            </Link>
-          </div>
+        <PodcastCard
+          title={title}
+          website={website}
+          cover={cover}
+          user={user}
+          _id={_id}
+          userId={userId}
+        />
+        <div className={styles.episodeContainer}>
+          {episodes.map(episode => (
+            <Episode {...episode} key={episode._id} />
+          ))}
         </div>
       </div>
     </>
@@ -61,7 +62,7 @@ const Podcast: FC<PodcastProps> = ({
 
 export async function getServerSideProps(context: any) {
   const { podcastId } = context.query;
-  const query = gql`
+  const podcastQuery = gql`
     query getPodcast($podcastId: ID!) {
       getPodcast(podcastId: $podcastId) {
         title
@@ -78,12 +79,32 @@ export async function getServerSideProps(context: any) {
   const {
     data: { getPodcast },
   } = await apolloClient.query({
-    query,
+    query: podcastQuery,
     variables: { podcastId },
   });
+
+  const episodesQuery = gql`
+    query getEpisodesByPodcast($podcastId: ID!) {
+      getEpisodesByPodcast(podcastId: $podcastId) {
+        episodes {
+          title
+          description
+          _id
+        }
+      }
+    }
+  `;
+  const {
+    data: { getEpisodesByPodcast },
+  } = await apolloClient.query({
+    query: episodesQuery,
+    variables: { podcastId },
+  });
+  console.log(getEpisodesByPodcast);
   return {
     props: {
       podcast: getPodcast,
+      episodes: getEpisodesByPodcast.episodes,
     },
   };
 }

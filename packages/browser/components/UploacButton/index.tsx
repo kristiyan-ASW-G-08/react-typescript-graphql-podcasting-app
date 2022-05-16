@@ -5,7 +5,7 @@ import getFile from 'utilities/getFile';
 import clickHandler from './clickHandler';
 import inputStyles from 'components/Input/index.module.scss';
 import styles from './index.module.scss';
-import UploadButtonPlayer from 'components/UploadButtonPlayer';
+import AudioPlayer from '@/components/AudioPlayer';
 import imageFileTypes from '@pod/common/source/fileTypes/imageFileTypes';
 import audioFileTypes from '@pod/common/source/fileTypes/audioFileTypes';
 
@@ -34,7 +34,7 @@ export const UploadButton: FC<UploadButtonProps> = ({
   return (
     <div className={inputStyles.input}>
       {fileUrl && showImage ? <img src={fileUrl} alt="" /> : ''}
-      {fileUrl && showPlayer ? <UploadButtonPlayer src={fileUrl} /> : ''}
+      {fileUrl && showPlayer ? <AudioPlayer audioSrc={fileUrl} /> : ''}
       <input
         data-testid="file-input"
         ref={inputRef}

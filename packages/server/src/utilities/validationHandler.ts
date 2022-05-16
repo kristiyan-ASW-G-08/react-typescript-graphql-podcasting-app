@@ -18,7 +18,6 @@ const validationHandler = async <T>(
           message,
         }),
       );
-
       throw new UserInputError('Validation Errors', {
         validationErrors,
       });
