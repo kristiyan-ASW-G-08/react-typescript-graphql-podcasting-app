@@ -1,0 +1,15 @@
+@import './variables.module.scss';
+@mixin button {
+  color: $white;
+  background: $primary;
+  border: none;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0 1rem 0 1rem;
+  height: 2rem;
+  color: $white;
+  &:hover {
+    background: $danger;
+  }
+}

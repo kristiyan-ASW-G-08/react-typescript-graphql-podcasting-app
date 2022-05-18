@@ -7,11 +7,21 @@ const getResources = async <
 >({
   query,
   model,
+  pagination: { limit, page },
 }: {
   query: Y;
   model: Model<T>;
-}): Promise<T[]> => {
-  return model.countDocuments().find(query);
+  pagination: Pagination;
+}): Promise<{ count: number; documents: T[] }> => {
+  const documents = await model
+    .countDocuments()
+    .find(query)
+    .skip((page - 1) * limit)
+    .limit(limit);
+
+  const count = (await model.countDocuments(query)) - page * limit;
+
+  return { count, documents };
 };
 
 export default getResources;

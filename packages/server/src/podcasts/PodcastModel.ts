@@ -21,4 +21,6 @@ PodcastSchema.post('save', duplicationErrorHandler);
 // @ts-ignore
 PodcastSchema.post('update', duplicationErrorHandler);
 
+PodcastSchema.index({ title: 'text' });
+
 export default mongoose.model<PodcastType>('Podcast', PodcastSchema);

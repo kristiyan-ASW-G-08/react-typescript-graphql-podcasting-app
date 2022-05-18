@@ -13,7 +13,6 @@ import {
 } from 'context/NotificationContext';
 import { useState } from 'react';
 import Footer from 'components/Footer';
-import styles from './index.module.scss';
 const Navbar = dynamic(() => import('../components/Navbar'), { ssr: false });
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -39,9 +38,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         )}
 
         <Navbar />
-        <div className={styles.layout}>
-          <Component {...pageProps} />
-        </div>
+
+        <Component {...pageProps} />
+
         <Footer />
       </NotificationContext.Provider>
     </ApolloProvider>

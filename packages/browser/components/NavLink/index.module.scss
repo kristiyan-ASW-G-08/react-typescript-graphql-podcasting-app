@@ -8,6 +8,9 @@
   &.active {
     color: $primary;
   }
+  &:hover {
+    color: $danger;
+  }
   &.unactive {
     color: $white;
   }

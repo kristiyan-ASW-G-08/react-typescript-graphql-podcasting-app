@@ -1,29 +1,27 @@
 @import '../../styles/variables.module.scss';
 @import '../../styles/mediaQueries.module.scss';
 @import '../../styles/mixins.module.scss';
+
 .card {
+  width: 10rem;
   display: grid;
   justify-items: center;
   grid-gap: 1rem;
-  padding: 2rem;
-
-  border: 1px solid $border;
+  border: solid 1px $border;
+  padding: 1rem;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
   img {
-    height: 10rem;
-    width: 10rem;
+    height: 7rem;
+    width: 100%;
   }
-  h1 {
-    font-size: 1.5rem;
+  h4 {
+    word-wrap: break-word;
   }
-  h2 {
-    font-size: 1rem;
-    color: $border;
-  }
-}
-.buttonContainer {
-  display: grid;
-  grid-gap: 0.5rem;
   button {
     @include button;
+    width: 100%;
   }
 }

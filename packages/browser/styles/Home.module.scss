@@ -1,0 +1,20 @@
+@import './variables.module.scss';
+@import './mixins.module.scss';
+.container {
+  display: grid;
+  justify-items: center;
+  padding: 5rem;
+  a,
+  button {
+    text-decoration: none;
+    // @include button;
+    border: none;
+    display: block;
+    @include button;
+  }
+}
+
+.sectionHeadline {
+  font-size: 3rem;
+  color: $dark;
+}

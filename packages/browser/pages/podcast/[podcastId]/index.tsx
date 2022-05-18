@@ -42,19 +42,26 @@ const Podcast: FC<PodcastProps> = ({
     <>
       <HeadLayout title={title} />
       <div className={styles.container}>
-        <PodcastCard
-          title={title}
-          website={website}
-          cover={cover}
-          user={user}
-          _id={_id}
-          userId={userId}
-        />
-        <div className={styles.episodeContainer}>
-          {episodes.map(episode => (
-            <Episode {...episode} key={episode._id} />
-          ))}
+        <div>
+          <PodcastCard
+            title={title}
+            website={website}
+            cover={cover}
+            user={user}
+            _id={_id}
+            userId={userId}
+          />
         </div>
+
+        {episodes.length === 0 ? (
+          <p>No Episodes Found</p>
+        ) : (
+          <div className={styles.episodeContainer}>
+            {episodes.map(episode => (
+              <Episode {...episode} key={episode._id} />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

@@ -7,7 +7,6 @@
   grid-gap: 1rem;
   border: solid 1px $border;
   padding: 1rem;
-  border-radius: 5px;
   &.fixed {
     left: 0;
     width: 100%;
@@ -58,12 +57,12 @@
 .progressContainer {
   background: $dark;
   height: 1.5rem;
-  border-radius: 5px;
+
   overflow: hidden;
 }
 .progress {
   height: 1.5rem;
-  border-radius: 5px;
+
   background: $danger;
   padding: 0.3rem;
   color: $white;
@@ -74,7 +73,7 @@
   background: $dark;
   color: $white;
   padding: 0.3rem;
-  border-radius: 5px;
+
   border: solid 1px $border;
   color: $primary;
   &:hover {

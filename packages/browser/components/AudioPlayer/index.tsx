@@ -120,6 +120,7 @@ const UploadButtonPlayer: FC<UploadButtonProps> = ({
         </button>
         <button
           type="button"
+          data-testid="playButton"
           onClick={audioHandler}
           className={`${styles.button} ${isPlaying ? styles.active : ''}`}
         >

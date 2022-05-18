@@ -60,13 +60,15 @@
     text-decoration: none;
     padding: 0.5rem 2rem 0.5rem 2rem;
     color: $white;
-    border: 3px solid $white;
-    border-radius: 5px;
     font-weight: bold;
     font-size: 0.9rem;
+    &:hover {
+      background: $danger;
+    }
   }
 }
 .opaqueButton {
+  border: solid 1px;
   background: none;
 }
 .primaryButton {

@@ -5,6 +5,7 @@ import {
   faPause,
   faBackward,
   faForward,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   fab,
@@ -21,6 +22,7 @@ library.add(
   faPause,
   faBackward,
   faForward,
+  faXmark,
   faTwitter,
   faInstagram,
   faFacebook,

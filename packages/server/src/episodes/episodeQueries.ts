@@ -1,5 +1,5 @@
 import EpisodeType from '@customTypes/EpisodeType';
-import getResources from '@src/utilities/getResources';
+import getResources from '@customUtilities/getResources';
 
 import EpisodeModel from './EpisodeModel';
 import getEpisodeByIs from './getEpisodeById';
@@ -19,14 +19,19 @@ const query = {
   },
   getEpisodesByPodcast: async (
     _: any,
-    { podcastId }: { podcastId: string },
-  ): Promise<{ episodes: EpisodeType[] }> => {
-    const episodes = await getResources<EpisodeType>({
+    {
+      podcastId,
+      page,
+      limit,
+    }: { podcastId: string; page: number; limit: number },
+  ): Promise<{ episodes: EpisodeType[]; count: number }> => {
+    const { documents, count } = await getResources<EpisodeType>({
       model: EpisodeModel,
       query: { podcast: podcastId },
+      pagination: { page, limit },
     });
 
-    return { episodes };
+    return { episodes: documents, count };
   },
 };
 

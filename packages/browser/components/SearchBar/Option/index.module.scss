@@ -1,0 +1,21 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mediaQueries.module.scss';
+@import '../../../styles/mixins.module.scss';
+.option {
+  position: relative;
+  a {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 0.5rem;
+    width: 100%;
+    background: $white;
+    border: solid 1px $border;
+    img {
+      height: 3rem;
+      width: 3rem;
+      border-radius: 100%;
+    }
+  }
+}

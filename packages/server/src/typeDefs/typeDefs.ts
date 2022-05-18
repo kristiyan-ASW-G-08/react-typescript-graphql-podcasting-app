@@ -13,11 +13,6 @@ const typeDefs = gql`
     getUser: User!
   }
 
-  type File {
-    filename: String!
-    mimetype: String!
-    encoding: String!
-  }
   type UserLoginPayload {
     username: String!
     email: String!
@@ -43,9 +38,15 @@ const typeDefs = gql`
   }
   type Episodes {
     episodes: [Episode]!
+    count: Int!
+  }
+  type Podcasts {
+    podcasts: [Podcast]!
+    count: Int!
   }
   type Query {
-    podcasts(query: String): [Podcast]!
+    getPodcasts(query: String, page: Int!, limit: Int!): Podcasts!
+    getPodcastsByTitle(title: String!): Podcasts!
     getPodcast(podcastId: ID!): Podcast!
     getEpisode(episodeId: ID!): Episode!
     getEpisodesByPodcast(podcastId: ID!): Episodes!

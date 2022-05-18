@@ -1,26 +1,16 @@
 @import '../../styles/variables.module.scss';
+@import '../../styles/mixins.module.scss';
 
 .formButton {
-  background: $primary;
-  color: $white;
-  height: 2rem;
-  min-width: 7rem;
-  padding: 0 1rem 0 1rem;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  border: none;
-  border-radius: 0.2rem;
-  &:hover {
-    background: $white;
-    color: $primary;
-  }
+  @include button;
+  overflow-y: hidden;
 }
 
 .loader {
   width: 100%;
   display: grid;
   place-items: center;
+  overflow: hidden;
 
   &:before {
     content: '';

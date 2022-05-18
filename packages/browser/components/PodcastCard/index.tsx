@@ -30,7 +30,7 @@ const PodcastCard: FC<PodcastProps> = ({
       <div className={styles.buttonContainer}>
         {userId === user._id ? (
           <>
-            <Link href={website}>
+            <Link href={`/podcast/edit/${_id}`}>
               <button>Edit</button>
             </Link>
             <Link href={`/create-episode/${_id}`}>

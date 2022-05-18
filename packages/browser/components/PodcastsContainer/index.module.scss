@@ -1,0 +1,17 @@
+@import '../../styles/variables.module.scss';
+@import '../../styles/mediaQueries.module.scss';
+@import '../../styles/mixins.module.scss';
+
+.podcasts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5rem;
+  margin: 3rem 0 3rem 0;
+  overflow: hidden;
+  @include tablets {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include desktop {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

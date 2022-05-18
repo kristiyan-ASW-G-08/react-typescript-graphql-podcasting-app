@@ -1,0 +1,43 @@
+@import '../../styles/variables.module.scss';
+@import '../../styles/mediaQueries.module.scss';
+@import '../../styles/mixins.module.scss';
+
+.form {
+  height: 7rem;
+  background: $dark;
+  display: grid;
+  place-items: center center;
+  input {
+    width: 80%;
+    height: 2rem;
+    background: lighten($dark, 10%);
+    border: none;
+    color: lighten($dark, 30%);
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
+}
+
+.datalist {
+  position: absolute;
+  transform: translateY(5.5rem);
+  overflow-y: scroll;
+  height: 9rem;
+  width: 80%;
+  border: solid 1px $border;
+}
+
+.closeDatalist {
+  color: $white;
+  font-size: 2rem;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  button {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: $primary;
+  }
+}

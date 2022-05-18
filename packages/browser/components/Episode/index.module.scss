@@ -1,18 +1,19 @@
 @import '../../styles/variables.module.scss';
 @import '../../styles/mediaQueries.module.scss';
+@import '../../styles/mixins.module.scss';
 
 .episode {
   display: grid;
   grid-gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 .playButton {
-  background: $primary;
   border: none;
   padding: 0.5rem;
   width: 7rem;
-  color: $white;
   &:hover {
     background: $danger;
+    color: $white;
   }
   .icon {
     margin-left: 0.5rem;
