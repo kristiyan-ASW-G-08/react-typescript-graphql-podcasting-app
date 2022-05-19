@@ -43,7 +43,6 @@ const UploadButtonPlayer: FC<UploadButtonProps> = ({
     //@ts-ignore
     const clickX = e.offsetX;
     const duration = audio.duration;
-    console.log(width, clickX);
     audio.currentTime = (clickX / width) * duration;
   };
 

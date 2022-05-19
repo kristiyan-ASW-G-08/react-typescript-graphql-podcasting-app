@@ -8,6 +8,7 @@ import styles from './index.module.scss';
 import { userDataVar } from 'variables';
 import PodcastCard from '@/components/PodcastCard';
 import Episode from '@/components/Episode';
+import getPodcastQuery from '@/queries/getPodcastQuery';
 
 interface EpisodeType {
   title: string;
@@ -32,7 +33,6 @@ const Podcast: FC<PodcastProps> = ({
   podcast: { title, website, cover, _id, user },
   episodes,
 }) => {
-  console.log(episodes);
   const [userId, setUserId] = useState<string>('');
   useEffect(() => {
     setUserId(userDataVar().userId);
@@ -69,24 +69,11 @@ const Podcast: FC<PodcastProps> = ({
 
 export async function getServerSideProps(context: any) {
   const { podcastId } = context.query;
-  const podcastQuery = gql`
-    query getPodcast($podcastId: ID!) {
-      getPodcast(podcastId: $podcastId) {
-        title
-        website
-        cover
-        _id
-        user {
-          username
-          _id
-        }
-      }
-    }
-  `;
+
   const {
     data: { getPodcast },
   } = await apolloClient.query({
-    query: podcastQuery,
+    query: getPodcastQuery,
     variables: { podcastId },
   });
 
@@ -107,7 +94,6 @@ export async function getServerSideProps(context: any) {
     query: episodesQuery,
     variables: { podcastId },
   });
-  console.log(getEpisodesByPodcast);
   return {
     props: {
       podcast: getPodcast,

@@ -8,20 +8,31 @@ import Input from '@/components/Input';
 import FormWrapper from '@/components/FormWrapper';
 import FieldsWrapper from '@/components/FieldsWrapper';
 import FormButton from '@/components/FormButton';
-import PodcastValidator from '@pod/common/source/schemaValidators/PodcastValidator';
+import UpdatePodcastValidator from '@pod/common/source/schemaValidators/UpdatePodcastValidator';
 import NotificationContext from 'context/NotificationContext';
 import formErrorHandler from '@/utilities/formErrorHandler';
 import UploadButton from '@/components/UploadButton';
-import { createPodcastMutation } from '@/queries/podcastMutations';
+import { updatePodcastMutation } from '@/queries/podcastMutations';
+import Podcast from '@/types/Podcast';
+import apolloClient from 'apolloClient';
+import getPodcastQuery from '@/queries/getPodcastQuery';
+import getPodcastsQuery from '@/queries/getPodcasts';
 
-const CreatePodcastPage: NextPage = () => {
-  const setNotification = useContext(NotificationContext);
+const EditPodcastPage: NextPage<{ podcast: Podcast }> = ({
+  podcast: { title, website },
+}) => {
+  const setNotificationState = useContext(NotificationContext);
   const router = useRouter();
-
-  const [createPodcast, { data, loading }] = useMutation(createPodcastMutation);
+  console.log();
+  const [updatePodcast, { data, loading }] = useMutation(
+    updatePodcastMutation,
+    {
+      refetchQueries: [getPodcastQuery, 'getPodcast'],
+    },
+  );
   useEffect(() => {
     if (data !== undefined) {
-      router.push(`/podcast/${data.createPodcastMutation._id}`);
+      router.push(`/podcast/${data.updatePodcastMutation._id}`);
     }
   }, [data, router]);
   return (
@@ -33,21 +44,25 @@ const CreatePodcastPage: NextPage = () => {
       />
 
       <Formik
-        validationSchema={PodcastValidator}
+        validationSchema={UpdatePodcastValidator}
         initialValues={{
-          title: '',
-          website: '',
+          title,
+          website,
           cover: '',
         }}
         onSubmit={(values, { setErrors }: FormikHelpers<FormikValues>) => {
-          createPodcast({ variables: values })
+          updatePodcast({
+            variables: { ...values, _id: router.query.podcastId },
+          })
             .then(() =>
-              setNotification({
-                content: 'You have successfully created a podcast!',
+              setNotificationState({
+                content: 'You have edited you podcast!',
+                type: 'message',
               }),
             )
             .catch(err => {
-              formErrorHandler(err, setErrors, setNotification);
+              console.log(JSON.stringify(err));
+              formErrorHandler(err, setErrors, setNotificationState);
             });
         }}
       >
@@ -59,7 +74,7 @@ const CreatePodcastPage: NextPage = () => {
 
                 <Input name="website" type="url" placeholder="Website" />
                 <UploadButton name="cover" setFieldValue={setFieldValue} />
-                <FormButton text={'Create a Podcast'} loading={loading} />
+                <FormButton text={'Edit Podcast'} loading={loading} />
               </FieldsWrapper>
             </Form>
           </FormWrapper>
@@ -69,4 +84,20 @@ const CreatePodcastPage: NextPage = () => {
   );
 };
 
-export default CreatePodcastPage;
+export async function getServerSideProps(context: any) {
+  const { podcastId } = context.query;
+  const {
+    data: { getPodcast },
+  } = await apolloClient.query({
+    query: getPodcastQuery,
+    variables: { podcastId },
+  });
+
+  return {
+    props: {
+      podcast: getPodcast,
+    },
+  };
+}
+
+export default EditPodcastPage;

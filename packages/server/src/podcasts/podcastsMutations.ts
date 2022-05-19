@@ -2,6 +2,7 @@ import writeFile from '@customUtilities/writeFile';
 import CreatePodcastDto from '@podcasts/CreatePodcastDto';
 import validationHandler from '@customUtilities/validationHandler';
 import PodcastValidator from '@pod/common/source/schemaValidators/PodcastValidator';
+import UpdatePodcastValidator from '@pod/common/source/schemaValidators/UpdatePodcastValidator';
 import createPodcast from '@podcasts/createPodcast';
 import PodcastType from '@customTypes/PodcastType';
 import authorizationHandler from '@customUtilities/authorizationHandler';
@@ -27,26 +28,25 @@ const mutation = {
   },
   updatePodcastMutation: async (
     _: any,
-    { title, website, cover, id }: EditPodcastDto,
+    { title, website, cover, _id }: EditPodcastDto,
     // @ts-ignore
     { headers: { authorization } }: Context,
-  ): Promise<PodcastType> => {
-    console.log(title, website, cover);
+  ): Promise<any> => {
     const secret = process.env.SECRET;
     authorizationHandler(authorization, secret);
-    await validationHandler({ title, website, cover }, PodcastValidator);
+    await validationHandler({ title, website, cover }, UpdatePodcastValidator);
 
-    const podcast = await getPodcastById(id);
+    const podcast = await getPodcastById(_id);
     if (cover) {
       const { filename, createReadStream } = await cover.promise;
       const stream = createReadStream();
-      const filePath = await writeFile(filename, stream);
+      const filePath = writeFile(filename, stream);
       deleteFile(podcast.cover);
       podcast.cover = filePath;
     }
     podcast.title = title;
     podcast.website = website;
-    await podcast.save();
+    await podcast.save({ validateModifiedOnly: true });
     return podcast;
   },
 };

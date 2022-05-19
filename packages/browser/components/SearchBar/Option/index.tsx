@@ -13,7 +13,7 @@ const Option: FC<OptionProps> = ({ title, cover, _id }) => {
       <Link
         href={`/podcast/${_id}`}
         onClick={() => {
-          console.log('click');
+
         }}
       >
         <a>

@@ -33,7 +33,6 @@ const Episode: FC<EpisodeProps> = ({
 }) => {
   const [userId, setUserId] = useState<string>('');
   const [showPlayer, setShowPlayer] = useState<boolean>(false);
-  console.log(`${process.env.NEXT_PUBLIC_SERVER_URL}/${audioFile}`);
   useEffect(() => {
     setShowPlayer(true);
     setUserId(userDataVar().userId);

@@ -61,8 +61,6 @@ export async function getServerSideProps() {
     query: getPodcastsQuery,
     variables: { page: 1, limit: 10 },
   });
-  console.log('Ahhhhhhhh');
-  console.log(getPodcasts);
   return {
     props: {
       podcasts: getPodcasts.podcasts,

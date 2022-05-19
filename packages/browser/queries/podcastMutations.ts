@@ -11,3 +11,21 @@ export const createPodcastMutation = gql`
     }
   }
 `;
+
+export const updatePodcastMutation = gql`
+  mutation updatePodcastMutation(
+    $title: String!
+    $website: String!
+    $cover: Upload
+    $_id: ID!
+  ) {
+    updatePodcastMutation(
+      title: $title
+      website: $website
+      cover: $cover
+      _id: $_id
+    ) {
+      _id
+    }
+  }
+`;

@@ -11,7 +11,7 @@ import FormButton from '@/components/FormButton';
 import EpisodeValidator from '@pod/common/source/schemaValidators/EpisodeValidator';
 import NotificationContext from 'context/NotificationContext';
 import formErrorHandler from '@/utilities/formErrorHandler';
-import UploadButton from '@/components/UploacButton';
+import UploadButton from '@/components/UploadButton';
 import { createEpisodeMutation } from '@/queries/episodeMutations';
 
 const CreateEpisodePage: NextPage = () => {
@@ -21,7 +21,6 @@ const CreateEpisodePage: NextPage = () => {
   const [createEpisode, { data, loading }] = useMutation(createEpisodeMutation);
   useEffect(() => {
     if (data !== undefined) {
-      console.log(data);
       router.push(`/episode/${data.createEpisodeMutation._id}`);
     }
   }, [data, router]);
@@ -48,7 +47,6 @@ const CreateEpisodePage: NextPage = () => {
               }),
             )
             .catch(err => {
-              console.log(JSON.stringify(err));
               formErrorHandler(err, setErrors, setNotification);
             });
         }}

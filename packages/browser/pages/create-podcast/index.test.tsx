@@ -13,7 +13,7 @@ import userEvent from '@testing-library/user-event';
 import NotificationContext, {
   defaultNotification,
 } from '@/context/NotificationContext';
-import UploadButton from '@/components/UploacButton';
+import UploadButton from '@/components/UploadButton';
 
 describe('CreatePodcastPage', () => {
   jest.setTimeout(30000);

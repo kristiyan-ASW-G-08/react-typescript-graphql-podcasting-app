@@ -53,7 +53,7 @@ const Login: NextPage = () => {
           password: '',
         }}
         onSubmit={(values, { setErrors }: FormikHelpers<FormikValues>) => {
-          console.log(values);
+
           loginUser({ variables: values })
             .then(() => setNotification({ content: 'You are now logged in!' }))
             .catch(err => {

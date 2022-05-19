@@ -49,7 +49,6 @@ const SignUp: NextPage = () => {
               }),
             )
             .catch(err => {
-              console.log(error, JSON.stringify(error));
               formErrorHandler(err, setErrors, setNotificationState);
             });
         }}

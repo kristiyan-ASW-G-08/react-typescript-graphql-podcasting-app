@@ -83,7 +83,6 @@ describe('Resolvers', () => {
           typeDefs,
           resolvers,
         });
-
         const result = await testServer.executeOperation({
           query,
           variables: {

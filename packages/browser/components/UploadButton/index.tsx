@@ -28,7 +28,6 @@ export const UploadButton: FC<UploadButtonProps> = ({
     setShowImage(imageFileTypes.includes(file.type));
     setShowPlayer(audioFileTypes.includes(file.type));
     setFileUrl(fileUrl);
-    console.log(name);
     setFieldValue(name, file);
   };
   return (
