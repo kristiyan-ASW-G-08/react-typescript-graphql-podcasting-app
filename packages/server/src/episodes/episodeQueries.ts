@@ -2,7 +2,7 @@ import EpisodeType from '@customTypes/EpisodeType';
 import getResources from '@customUtilities/getResources';
 
 import EpisodeModel from './EpisodeModel';
-import getEpisodeByIs from './getEpisodeById';
+import getEpisodeById from './getEpisodeById';
 
 const query = {
   getEpisode: async (
@@ -10,7 +10,7 @@ const query = {
     { episodeId }: { episodeId: string },
   ): // @ts-ignore
   Promise<EpisodeType> => {
-    return (await getEpisodeByIs(episodeId))
+    return (await getEpisodeById(episodeId))
       .populate([
         { path: 'user', select: 'username' },
         { path: 'podcast', select: 'title cover' },

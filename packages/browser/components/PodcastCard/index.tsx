@@ -31,10 +31,10 @@ const PodcastCard: FC<PodcastProps> = ({
         {userId === user._id ? (
           <>
             <Link href={`/podcast/edit/${_id}`}>
-              <button>Edit</button>
+              <button data-testid="edit">Edit</button>
             </Link>
             <Link href={`/create-episode/${_id}`}>
-              <button>Create An Episode</button>
+              <button data-testid="create">Create An Episode</button>
             </Link>
           </>
         ) : (

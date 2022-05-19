@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 import { render } from '@testing-library/react';
-import { RouterContext } from 'next/dist/shared/lib/router-context';
-import createMockRouter from '../../testUtilities/createMockRouter';
 import '@testing-library/jest-dom/extend-expect';
 import Notification from '.';
 

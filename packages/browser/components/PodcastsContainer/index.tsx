@@ -2,7 +2,7 @@ import apolloClient from '../../apolloClient';
 import { FC, useState } from 'react';
 import getPodcastsQuery from '@/queries/getPodcasts';
 import styles from './index.module.scss';
-import PodcastMiniCard from 'components/PodcastMiniCard';
+import PodcastMiniCard from '@/components/PodcastMiniCard';
 import Podcast from '@/types/Podcast';
 
 interface PodcastsContainerProps {
@@ -11,9 +11,13 @@ interface PodcastsContainerProps {
 const PodcastsContainer: FC<PodcastsContainerProps> = ({ podcasts }) => {
   return (
     <section className={styles.container}>
-      <div className={styles.podcasts}>
+      <div data-testid="podcasts" className={styles.podcasts}>
         {podcasts.map(podcast => (
-          <PodcastMiniCard {...podcast} key={podcast._id} />
+          <PodcastMiniCard
+            data-testid={podcast._id}
+            {...podcast}
+            key={podcast._id}
+          />
         ))}
       </div>
     </section>

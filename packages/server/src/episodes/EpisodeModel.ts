@@ -4,7 +4,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 import duplicationErrorHandler from '@customUtilities/duplicationErrorHandler';
 
 const EpisodeSchema = new Schema<EpisodeType>({
-  title: { type: String, maxlength: 50, minlength: 1, unique: true },
+  title: { type: String, maxlength: 50, minlength: 1 },
   description: { type: String, required: true },
   audioFile: { type: String, required: true },
   user: {
@@ -23,11 +23,11 @@ const EpisodeSchema = new Schema<EpisodeType>({
   },
 });
 
-// @ts-ignore
-EpisodeSchema.plugin(uniqueValidator);
-// @ts-ignore
-EpisodeSchema.post('save', duplicationErrorHandler);
-// @ts-ignore
-EpisodeSchema.post('update', duplicationErrorHandler);
+// // @ts-ignore
+// EpisodeSchema.plugin(uniqueValidator);
+// // @ts-ignore
+// EpisodeSchema.post('save', duplicationErrorHandler);
+// // @ts-ignore
+// EpisodeSchema.post('update', duplicationErrorHandler);
 
 export default mongoose.model<EpisodeType>('Episode', EpisodeSchema);

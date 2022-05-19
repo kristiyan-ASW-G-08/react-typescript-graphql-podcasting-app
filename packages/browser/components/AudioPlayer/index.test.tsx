@@ -6,9 +6,13 @@ import AudioPlayer from '.';
 
 const play = jest.fn();
 const pause = jest.fn();
+const addEventListener = jest.fn();
+const removeEventListener = jest.fn();
 global.Audio = jest.fn().mockImplementation(() => ({
   pause,
   play,
+  addEventListener,
+  removeEventListener,
 }));
 
 describe('AudioPlayer', () => {

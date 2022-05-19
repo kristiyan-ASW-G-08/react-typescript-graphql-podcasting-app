@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PodcastsContainer render PodcastsContainer 1`] = `
+HTMLCollection [
+  <div
+    class="card"
+  >
+    <img
+      alt=""
+      src="undefined/somecover.svg"
+    />
+    <h4>
+      SomeTItle
+    </h4>
+    <button>
+      Learn More
+    </button>
+  </div>,
+  <div
+    class="card"
+  >
+    <img
+      alt=""
+      src="undefined/somecover.svg"
+    />
+    <h4>
+      SomeTItle
+    </h4>
+    <button>
+      Learn More
+    </button>
+  </div>,
+  <div
+    class="card"
+  >
+    <img
+      alt=""
+      src="undefined/somecover.svg"
+    />
+    <h4>
+      SomeTItle
+    </h4>
+    <button>
+      Learn More
+    </button>
+  </div>,
+  <div
+    class="card"
+  >
+    <img
+      alt=""
+      src="undefined/somecover.svg"
+    />
+    <h4>
+      SomeTItle
+    </h4>
+    <button>
+      Learn More
+    </button>
+  </div>,
+  <div
+    class="card"
+  >
+    <img
+      alt=""
+      src="undefined/somecover.svg"
+    />
+    <h4>
+      SomeTItle
+    </h4>
+    <button>
+      Learn More
+    </button>
+  </div>,
+  <div
+    class="card"
+  >
+    <img
+      alt=""
+      src="undefined/somecover.svg"
+    />
+    <h4>
+      SomeTItle
+    </h4>
+    <button>
+      Learn More
+    </button>
+  </div>,
+  <div
+    class="card"
+  >
+    <img
+      alt=""
+      src="undefined/somecover.svg"
+    />
+    <h4>
+      SomeTItle
+    </h4>
+    <button>
+      Learn More
+    </button>
+  </div>,
+  <div
+    class="card"
+  >
+    <img
+      alt=""
+      src="undefined/somecover.svg"
+    />
+    <h4>
+      SomeTItle
+    </h4>
+    <button>
+      Learn More
+    </button>
+  </div>,
+]
+`;

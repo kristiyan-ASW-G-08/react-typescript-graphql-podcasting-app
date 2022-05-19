@@ -1,0 +1,286 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PodcasCArd render PodcastCard with non matching user 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      src="undefined/somecover.svg"
+    />
+    <h1>
+      SomeTItle
+    </h1>
+    <h2>
+      SomeUser
+    </h2>
+    <div
+      class="buttonContainer"
+    >
+      <button>
+        Website
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PodcasCArd render PodcastCard with non matching user 2`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      src="undefined/somecover.svg"
+    />
+    <h1>
+      SomeTItle
+    </h1>
+    <h2>
+      SomeUser
+    </h2>
+    <div
+      class="buttonContainer"
+    >
+      <button
+        data-testid="edit"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="create"
+      >
+        Create An Episode
+      </button>
+      <button>
+        Website
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Podcast render PodcastCard with non matching user 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      src="undefined/somecover.svg"
+    />
+    <h1>
+      SomeTItle
+    </h1>
+    <h2>
+      SomeUser
+    </h2>
+    <div
+      class="buttonContainer"
+    >
+      <button>
+        Website
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Podcast render PodcastCard with non matching user 2`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      src="undefined/somecover.svg"
+    />
+    <h1>
+      SomeTItle
+    </h1>
+    <h2>
+      SomeUser
+    </h2>
+    <div
+      class="buttonContainer"
+    >
+      <button
+        data-testid="edit"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="create"
+      >
+        Create An Episode
+      </button>
+      <button>
+        Website
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PodcastCard render PodcastCard with matching fuser 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      src="undefined/somecover.svg"
+    />
+    <h1>
+      SomeTItle
+    </h1>
+    <h2>
+      SomeUser
+    </h2>
+    <div
+      class="buttonContainer"
+    >
+      <button
+        data-testid="edit"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="create"
+      >
+        Create An Episode
+      </button>
+      <button>
+        Website
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PodcastCard render PodcastCard with matching user 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      src="undefined/somecover.svg"
+    />
+    <h1>
+      SomeTItle
+    </h1>
+    <h2>
+      SomeUser
+    </h2>
+    <div
+      class="buttonContainer"
+    >
+      <button
+        data-testid="edit"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="create"
+      >
+        Create An Episode
+      </button>
+      <button>
+        Website
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PodcastCard render PodcastCard with non matching user 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      src="undefined/somecover.svg"
+    />
+    <h1>
+      SomeTItle
+    </h1>
+    <h2>
+      SomeUser
+    </h2>
+    <div
+      class="buttonContainer"
+    >
+      <button>
+        Website
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PodcastCard render PodcastCard with non matching user 2`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      src="undefined/somecover.svg"
+    />
+    <h1>
+      SomeTItle
+    </h1>
+    <h2>
+      SomeUser
+    </h2>
+    <div
+      class="buttonContainer"
+    >
+      <button
+        data-testid="edit"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="create"
+      >
+        Create An Episode
+      </button>
+      <button>
+        Website
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PodcastCard render PodcastCard with user 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      src="undefined/somecover.svg"
+    />
+    <h1>
+      SomeTItle
+    </h1>
+    <h2>
+      SomeUser
+    </h2>
+    <div
+      class="buttonContainer"
+    >
+      <button
+        data-testid="edit"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="create"
+      >
+        Create An Episode
+      </button>
+      <button>
+        Website
+      </button>
+    </div>
+  </div>
+</div>
+`;
