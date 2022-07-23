@@ -62,7 +62,11 @@ const CreateEpisodePage: NextPage = () => {
                   type="text"
                   placeholder="description"
                 />
-                <UploadButton name="audioFile" setFieldValue={setFieldValue} />
+                <UploadButton
+                  name="audioFile"
+                  setFieldValue={setFieldValue}
+                  data-testid="file-input"
+                />
                 <FormButton text={'Create an Episode'} loading={loading} />
               </FieldsWrapper>
             </Form>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Resolvers Mutations fail to create a podcast due to authorization  1`] = `
+exports[`Resolvers Mutations fail to create a podcast due to authorization error 1`] = `
 Array [
   [GraphQLError: Cannot read properties of undefined (reading 'authorization')],
 ]

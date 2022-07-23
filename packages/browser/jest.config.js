@@ -58,5 +58,6 @@ module.exports = {
     '^types/(.*)$': '<rootDir>/types/$1',
     '^queries/(.*)$': '<rootDir>/queries/$1',
     '^context/(.*)$': '<rootDir>/context/$1',
+    '^hooks/(.*)$': '<rootDir>/hooks/$1',
   },
 };

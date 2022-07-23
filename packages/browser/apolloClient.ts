@@ -1,6 +1,6 @@
 import { ApolloClient, HttpLink, InMemoryCache, makeVar } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { userDataVar, tokenVar } from 'variables';
+import { userDataVar, tokenVar } from './variables';
 //@2
 import { createUploadLink } from 'apollo-upload-client';
 

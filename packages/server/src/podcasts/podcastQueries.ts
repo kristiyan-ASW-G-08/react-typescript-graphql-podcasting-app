@@ -13,12 +13,12 @@ const query = {
   },
   getPodcasts: async (
     _: any,
-    { page, limit }: { page: number; limit: number },
+    { userId, page, limit }: { userId: string; page: number; limit: number },
   ): // @ts-ignore
   Promise<{ podcasts: PodcastType[]; count: number }> => {
     const { documents, count } = await getResources<PodcastType>({
       model: PodcastModel,
-      query: {},
+      query: userId ? { user: userId } : {},
       pagination: { page, limit },
     });
 

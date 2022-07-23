@@ -35,7 +35,9 @@ const Podcast: FC<PodcastProps> = ({
 }) => {
   const [userId, setUserId] = useState<string>('');
   useEffect(() => {
-    setUserId(userDataVar().userId);
+    if (userDataVar().userId) {
+      setUserId(userDataVar().userId);
+    }
   }, []);
 
   return (

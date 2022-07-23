@@ -5,7 +5,7 @@ import { MockedProvider } from '@apollo/client/testing';
 import '@testing-library/jest-dom/extend-expect';
 import UserEvent from '@testing-library/user-event';
 import '../../importFontAwesome';
-import createMockRouter from '../../testUtilities/createMockRouter';
+import createMockRouter from '../../../testUtilities/createMockRouter';
 import { createPodcastMutation } from '@/queries/podcastMutations';
 import CreatePodcastPage from '.';
 import { UserMutation } from '@/queries/userQueries';
@@ -14,6 +14,7 @@ import NotificationContext, {
   defaultNotification,
 } from '@/context/NotificationContext';
 import UploadButton from '@/components/UploadButton';
+import { createEpisodeMutation } from '@/queries/episodeMutations';
 
 describe('CreatePodcastPage', () => {
   jest.setTimeout(30000);
@@ -24,8 +25,8 @@ describe('CreatePodcastPage', () => {
     //assertions should be four/ waitFor bug
     expect.assertions(6);
     const title = 'passwordpassword';
-    const website = 'https://mockWebsite.com';
-    const file = new File(['imageFile'], 'values.jpg', {
+    const description = 'description';
+    const file = new File(['audiofile'], 'values.mp4', {
       type: 'image/jpeg',
     });
     const credentials = [
@@ -34,19 +35,15 @@ describe('CreatePodcastPage', () => {
         placeholder: 'Title',
       },
       {
-        value: website,
-        placeholder: 'Website',
-      },
-      {
-        value: website,
-        placeholder: 'Website',
+        value: description,
+        placeholder: 'Description',
       },
     ];
     const mocks = [
       {
         request: {
-          query: createPodcastMutation,
-          variables: { title, website },
+          query: createEpisodeMutation,
+          variables: { title, description },
         },
         result: {
           data: {},

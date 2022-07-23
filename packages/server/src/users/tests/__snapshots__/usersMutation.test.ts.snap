@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Resolvers Mutations createUserMutation it fails validation and returns validation errors 1`] = `undefined`;
+
+exports[`Resolvers Mutations createUserMutation it uses duplicate email and username and returns validation errors 1`] = `undefined`;
+
+exports[`Resolvers Mutations loginMutation login unsuccessfully 1`] = `
+Array [
+  [GraphQLError: Validation Error],
+]
+`;
+
+exports[`Resolvers Mutations loginMutation login unsuccessfully because user is not found 1`] = `
+Array [
+  [GraphQLError: Validation Error],
+]
+`;

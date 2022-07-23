@@ -9,28 +9,16 @@ import Podcast from '@/types/Podcast';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import SearchBar from '@/components/SearchBar';
+import usePodcasts from 'hooks/usePodcasts';
+
 const Hero = dynamic(() => import('../components/Hero'), { ssr: false });
 
 interface HomerProps {
   podcasts: Podcast[];
 }
 const Home: NextPage<HomerProps> = ({ podcasts }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [currentPodcasts, setCurrentPodcasts] = useState<Podcast[]>(podcasts);
   const maxPage = 3;
-  const loadNextPage = async () => {
-    if (currentPage >= maxPage) {
-      return;
-    }
-    const {
-      data: { getPodcasts },
-    } = await apolloClient.query({
-      query: getPodcastsQuery,
-      variables: { page: currentPage + 1, limit: 10 },
-    });
-    setCurrentPage(prev => prev + 1);
-    setCurrentPodcasts([...currentPodcasts, ...getPodcasts.podcasts]);
-  };
+  const { currentPodcasts, loadNextPage,currentPage } = usePodcasts(podcasts);
   return (
     <>
       <HeadLayout

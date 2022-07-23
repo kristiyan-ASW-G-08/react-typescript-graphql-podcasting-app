@@ -45,7 +45,7 @@ const typeDefs = gql`
     count: Int!
   }
   type Query {
-    getPodcasts(query: String, page: Int!, limit: Int!): Podcasts!
+    getPodcasts(query: String, page: Int!, limit: Int!, userId: ID): Podcasts!
     getPodcastsByTitle(title: String!): Podcasts!
     getPodcast(podcastId: ID!): Podcast!
     getEpisode(episodeId: ID!): Episode!

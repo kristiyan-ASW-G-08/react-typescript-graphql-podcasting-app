@@ -35,7 +35,9 @@ const Episode: FC<EpisodeProps> = ({
   const [showPlayer, setShowPlayer] = useState<boolean>(false);
   useEffect(() => {
     setShowPlayer(true);
-    setUserId(userDataVar().userId);
+    if (userDataVar().userId) {
+      setUserId(userDataVar().userId);
+    }
   }, []);
 
   return (
